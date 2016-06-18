@@ -8,8 +8,6 @@ Version 		1.0
 Author URI: 	http://www.mrjoshfisher.com
 License:		GPL2
 
-Copyright 2016 Lemon Plugin
-
 Woocommerce Product Shortcode is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 2 of the License, or
@@ -23,6 +21,17 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Woocommerce Product Shortcode. If not, see {URI to Plugin License}.
 */
+
+function wcshort_styles() {
+    wp_enqueue_style('wcshortstyles', plugins_url('/assets/css/wcshortstyle.css', __FILE__));
+}
+
+function wcshort_scripts() {
+	wp_enqueue_script('wcshortscripts', plugins_url('/assets/js/min/wcshortcustom-min.js', __FILE__));
+}
+
+add_action('wp_enqueue_scripts', 'wcshort_styles');
+add_action('wp_enqueue_scripts', 'wcshort_scripts');
 
 add_shortcode( 'wcproductinfo', 'wcproductinfo_function' );
 
@@ -117,6 +126,57 @@ add_shortcode( 'wcproductinfo', 'wcproductinfo_function' );
 		<input type="hidden" name="add-to-cart" value="' . esc_attr($pro->id) . '"><button type="submit">' .  $pro->single_add_to_cart_text() . '</button></form>';
 		
 		return $ret;
+
+}
+
+// WOOCOMMERCE PRODUCT SLIDER SHORTCODE
+
+add_shortcode( 'wcslider', 'wcproductslider' );
+
+function wcproductslider($atts) {
+	$a = shortcode_atts( array(
+        //'product' => '98',
+        'products' => '',
+    ), $atts );
+
+	$sliproducts = explode(",", $a['products']);
+	
+	$ret = '';
+	$ret .= "<div class='slider-wrapper'>";
+	$ret .= "<div class='slider multiple-items'>";
+	
+	foreach ($sliproducts as $productkey) {
+		//$ret .= $productkey;
+		$product_ID = $productkey; //Product ID
+		$pro = new WC_Product($product_ID);
+		
+		$ret .= "
+				<div>
+				<a  href=' " .$pro->get_permalink() . " '>"
+				. $pro->get_image('full') .  "</a>
+				<p class='ptitle'>" . $pro->get_title() . "</p>
+				<p class='pprice'>" . $pro->get_regular_price() . "</p>
+				<p class='pdesc'>". $pro->post->post_excerpt . "</p>
+				<form class='cart' method='post' enctype='multipart/form-data'><input type='hidden' name='add-to-cart' value='" . esc_attr($pro->id) . "'><button type='submit'>" .  $pro->single_add_to_cart_text() . "</button></form>
+				</div>
+			
+				";
+	}
+	
+	$ret .= "</div>";
+	$ret .= "</div>";
+
+	/*$ret .= '<script type="text/javascript">
+        jQuery(function ($){
+	        $(document).ready(function(){
+		        $(".multiple-items").slick({
+				  slidesToShow:3,slidesToScroll: 1,autoplay:false,arrows:true,dots:false,autoplaySpeed: 2000,
+			   });
+		   });
+	   });
+    </script>';*/
+	
+    return $ret;
 
 }
 
