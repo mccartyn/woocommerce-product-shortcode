@@ -3,7 +3,7 @@
 Plugin Name: 	Woocommerce Product Shortcode
 Plugin URI: 	http://www.lemonapps.co.uk/plugins
 Description: 	A shortcode for displaying woocommerce product info
-Author: 		Lemon Apps
+Author: 		Josh Fisher
 Version 		1.0
 Author URI: 	http://www.lemonapps.co.uk/
 License:		GPL2
