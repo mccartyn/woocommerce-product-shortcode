@@ -22,6 +22,7 @@ V1.0 Displays the basic woocommerce product info:
 ### Installation
 Put the folder wcproductshortcode in your plugins directory of your wordpress site
 
-Requires [WooCommerce](https://www.woothemes.com/woocommerce/) to work,
+Requires [WooCommerce](https://www.woothemes.com/woocommerce/) to work
 
-Reference [Class WC_Product](https://docs.woothemes.com/wc-apidocs/class-WC_Product.html)
+Reference [Class WC_Product](https://docs.woothemes.com/wc-apidocs/class-WC_Product.html) incase you want to try other classes.
+
