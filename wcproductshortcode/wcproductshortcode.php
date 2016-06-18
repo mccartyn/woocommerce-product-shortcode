@@ -1,11 +1,11 @@
 <?php
 /*
 Plugin Name: 	Woocommerce Product Shortcode
-Plugin URI: 	http://www.lemonapps.co.uk/plugins
+Plugin URI: 	http://www.mrjoshfisher.com/plugins
 Description: 	A shortcode for displaying woocommerce product info
 Author: 		Josh Fisher
 Version 		1.0
-Author URI: 	http://www.lemonapps.co.uk/
+Author URI: 	http://www.mrjoshfisher.com
 License:		GPL2
 
 Copyright 2016 Lemon Plugin
