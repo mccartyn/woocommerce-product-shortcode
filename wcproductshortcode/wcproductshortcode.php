@@ -153,11 +153,10 @@ function wcproductslider($atts) {
 		$ret .= "
 				<div>
 				<a  href=' " .$pro->get_permalink() . " '>"
-				. $pro->get_image('full') .  "</a>
+				. $pro->get_image() .  "</a>
 				<p class='ptitle'>" . $pro->get_title() . "</p>
-				<p class='pprice'>" . $pro->get_regular_price() . "</p>
-				<p class='pdesc'>". $pro->post->post_excerpt . "</p>
-				<form class='cart' method='post' enctype='multipart/form-data'><input type='hidden' name='add-to-cart' value='" . esc_attr($pro->id) . "'><button type='submit'>" .  $pro->single_add_to_cart_text() . "</button></form>
+				<p class='pprice'>£" . $pro->get_regular_price() . "</p>
+				<p class='plink'><a href=' " .$pro->get_permalink() . " '>View Product</a></p>
 				</div>
 			
 				";
